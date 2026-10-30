@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de software premium y tutoriales de Alejandrx15.">
+  <meta name="theme-color" content="#000000">
+  <title>Alejandrx15 — Catálogo de Software Premium & Tutoriales</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            appleBg: '#000000',
+            appleCard: '#1c1c1e',
+            appleCardHover: '#2c2c2e',
+            appleBorder: 'rgba(255, 255, 255, 0.12)',
+            appleSubtext: '#86868b',
+            appleText: '#f5f5f7'
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'Inter', 'sans-serif']
+          },
+          boxShadow: {
+            'apple-white-glow': '0 0 20px rgba(255, 255, 255, 0.35)',
+            'apple-white-hover': '0 0 30px rgba(255, 255, 255, 0.55)',
+            'apple-card': '0 12px 40px rgba(0, 0, 0, 0.85)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #000000;
+      color: #f5f5f7;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Apple Glassmorphism Blur */
+    .apple-glass {
+      background: rgba(28, 28, 30, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Titanium Card styling */
+    .apple-card {
+      background: rgba(28, 28, 30, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .apple-card:hover {
+      background: rgba(44, 44, 46, 0.95);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.12);
+    }
+
+    /* Premium White Animated Button */
+    .btn-apple-white {
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: 800;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-apple-white:hover {
+      background-color: #ffffff;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-apple-white:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    /* Secondary Dark Apple Button with White Accent */
+    .btn-apple-dark {
+      background: rgba(44, 44, 46, 0.8);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-apple-dark:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-apple-dark:active {
+      transform: translateY(0) scale(0.97);
+    }
+
+    .apple-pill {
+      background: rgba(44, 44, 46, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    .apple-pill.active {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c2c2e;
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Ajuste dinámico: la barra de categorías se pega justo debajo del header real */
+    #catBar { top: var(--hh, 5rem); }
+    #programsGrid { scroll-margin-top: calc(var(--hh, 5rem) + 84px); }
+
+    /* Animaciones de entrada estilo iOS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    @keyframes sheetUp { from { opacity: 0; transform: translateY(32px) scale(.97); } to { opacity: 1; transform: none; } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    section.relative > div { animation: fadeUp .8s cubic-bezier(.16,1,.3,1) backwards; }
+    #programModal { animation: fadeIn .3s ease-out; }
+    #programModal > div { animation: sheetUp .5s cubic-bezier(.16,1,.3,1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-white selection:text-black">
+
+  <!-- Ambient Ambient Glows -->
+  <div class="fixed -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[380px] bg-white/5 rounded-full blur-[150px] pointer-events-none"></div>
+  <div class="fixed bottom-0 right-0 w-[480px] h-[480px] bg-white/5 rounded-full blur-[170px] pointer-events-none"></div>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 apple-glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- LOGO & BRANDING -->
+        <a href="#" class="flex items-center space-x-3.5 group" onclick="resetFilters()">
+          <div class="relative w-11 h-11 rounded-full p-[2px] bg-gradient-to-tr from-gray-700 via-white to-gray-400 shadow-apple-white-glow group-hover:scale-105 transition-all">
+            <img 
+              src="e5bb3efa57fff60e7b6bbd1afcb27940~tplv-tiktokx-cropcenter_1080_1080 (1).jpeg" 
+              alt="Alejandrx15" 
+              class="w-full h-full object-cover rounded-full bg-black"
+              onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80'"
+            >
+          </div>
+          <div>
+            <span class="text-xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
+              Alejandrx15 <i class="fa-solid fa-circle-check text-white text-xs"></i>
+            </span>
+            <span class="block text-[11px] text-appleSubtext font-medium tracking-wide">
+              Official Alejandrx15
+            </span>
+          </div>
+        </a>
+
+        <!-- SEARCH BAR (Desktop) -->
+        <div class="hidden md:flex flex-1 max-w-md mx-8">
+          <div class="relative w-full">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-appleSubtext text-xs"></i>
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Buscar programas, categorías..." 
+              class="w-full pl-10 pr-10 py-2.5 bg-[#1c1c1e] border border-appleBorder rounded-full text-xs text-appleText placeholder-appleSubtext focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all shadow-inner"
+            >
+            <button id="clearSearchBtn" aria-label="Borrar búsqueda" class="hidden absolute right-3.5 top-1/2 -translate-y-1/2 text-appleSubtext hover:text-white text-xs">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT COMMUNITY ACTION -->
+        <div class="flex items-center space-x-3">
+          <a href="#" target="_blank" class="px-4 py-2 rounded-full bg-[#1c1c1e] hover:bg-[#2c2c2e] border border-appleBorder text-appleText hover:text-white text-xs font-semibold flex items-center space-x-2 transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+            <i class="fa-brands fa-discord text-white"></i>
+            <span class="hidden sm:inline">Comunidad</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- SEARCH BAR (Mobile) -->
+      <div class="md:hidden pb-4">
+        <div class="relative w-full">
+          <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-appleSubtext text-xs"></i>
+          <input 
+            type="text" 
+            id="searchInputMobile"
+            placeholder="Buscar programas..." 
+            class="w-full pl-10 pr-4 py-2.5 bg-[#1c1c1e] border border-appleBorder rounded-full text-xs text-appleText placeholder-appleSubtext focus:outline-none focus:border-white"
+          >
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-8 px-4 text-center border-b border-appleBorder">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- Metallic Badge -->
+      <div class="inline-flex items-center px-4 py-1.5 rounded-full text-[11px] font-bold bg-[#1c1c1e] border border-white/20 text-white mb-5 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-white mr-2.5 animate-pulse shadow-[0_0_8px_#ffffff]"></span>
+        Catálogo Completo Mastercito YT • Servidor Alejandrx15
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4">
+        Software Premium & Herramientas
+      </h1>
+      
+      <p class="text-base sm:text-lg text-appleSubtext max-w-2xl mx-auto font-normal leading-relaxed">
+        Selecciona cualquier programa para abrir la página oficial o visualizar el tutorial de instalación correspondiente.
+      </p>
+
+      <!-- Stats Bar -->
+      <div class="mt-8 flex flex-wrap justify-center gap-3 text-xs text-appleSubtext font-medium">
+        <div class="flex items-center space-x-2 px-4 py-2 bg-[#1c1c1e] rounded-full border border-appleBorder text-white">
+          <i class="fa-solid fa-shield-halved text-white"></i>
+          <span>100% Verificado</span>
+        </div>
+        <div class="flex items-center space-x-2 px-4 py-2 bg-[#1c1c1e] rounded-full border border-appleBorder text-white">
+          <i class="fa-solid fa-bolt text-white"></i>
+          <span>Sitios Oficiales</span>
+        </div>
+        <div class="flex items-center space-x-2 px-4 py-2 bg-[#1c1c1e] rounded-full border border-appleBorder text-white">
+          <i class="fa-solid fa-layer-group text-white"></i>
+          <span id="heroTotalCount">30 Programas Disponibles</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATEGORIES PILLS (Apple Segmented Style) -->
+  <section id="catBar" class="sticky top-20 z-30 bg-black/90 backdrop-blur-xl py-4 border-b border-appleBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar" id="categoriesContainer">
+        <!-- Categories populated dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
+    
+    <!-- Section Sub-header -->
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 pb-4 border-b border-appleBorder gap-4">
+      <div>
+        <h2 id="sectionTitle" class="text-xl font-bold text-white flex items-center gap-2">
+          Catálogo de Programas
+        </h2>
+        <p id="sectionSubtitle" class="text-xs text-appleSubtext mt-1">Haz clic en "OBTENER / ENLACES" para desplegar la ventana con los dos botones.</p>
+      </div>
+      <div id="resultsCounter" class="text-xs font-bold px-3 py-1 bg-[#1c1c1e] text-white border border-appleBorder rounded-full shadow-sm">
+        Cargando programas...
+      </div>
+    </div>
+
+    <!-- CARDS GRID -->
+    <div id="programsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Generated via JavaScript -->
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div id="emptyState" class="hidden text-center py-20 bg-[#1c1c1e]/40 rounded-3xl border border-appleBorder">
+      <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-[#1c1c1e] flex items-center justify-center text-appleSubtext text-xl">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <h3 class="text-base font-bold text-white mb-1">Sin resultados encontrados</h3>
+      <p class="text-xs text-appleSubtext max-w-sm mx-auto mb-6">No encontramos coincidencias para tu búsqueda. Intenta con otro término.</p>
+      <button onclick="resetFilters()" class="btn-apple-white px-6 py-2.5 rounded-full text-xs font-extrabold">
+        Ver Todo el Catálogo
+      </button>
+    </div>
+
+    <!-- PAGINATION -->
+    <div id="paginationContainer" class="mt-12 flex justify-center items-center space-x-2">
+      <!-- Pagination JS -->
+    </div>
+
+  </main>
+
+  <!-- PROGRAM DETAIL MODAL (IOS SHEET STYLE WITH 2 BUTTONS) -->
+  <div id="programModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-2xl transition-opacity">
+    <div class="relative w-full max-w-2xl bg-[#1c1c1e] border border-white/20 rounded-3xl shadow-apple-card overflow-hidden my-8 max-h-[90vh] flex flex-col">
+      
+      <!-- Modal Header -->
+      <div class="p-6 bg-gradient-to-b from-[#2c2c2e] to-[#1c1c1e] border-b border-appleBorder relative flex items-start space-x-4">
+        <button id="closeModalBtn" aria-label="Cerrar" onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 bg-black/60 hover:bg-black text-appleSubtext hover:text-white rounded-full flex items-center justify-center transition-all border border-appleBorder">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+
+        <div id="modalIconContainer" class="w-20 h-20 rounded-2xl bg-black border border-white/20 shadow-lg flex items-center justify-center text-3xl shrink-0">
+          <!-- Icon or Image populated dynamically -->
+        </div>
+        
+        <div class="pr-10 min-w-0">
+          <span id="modalCategory" class="inline-block px-3 py-0.5 rounded-full text-[10px] font-bold bg-white/10 text-white border border-white/20 mb-1.5">
+            Categoría
+          </span>
+          <h3 id="modalTitle" class="text-2xl font-black text-white tracking-tight">Nombre Programa</h3>
+          <p id="modalVersion" class="text-xs text-appleSubtext font-mono mt-0.5">v1.0</p>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 overflow-y-auto flex-1 space-y-6">
+        
+        <!-- Specs Pill Row -->
+        <div class="grid grid-cols-3 gap-3 bg-black/60 p-4 rounded-2xl border border-appleBorder text-xs">
+          <div>
+            <span class="text-appleSubtext block uppercase text-[9px] font-bold tracking-wider">Estado</span>
+            <span class="text-white font-semibold flex items-center gap-1">
+              <i class="fa-solid fa-circle text-[8px] text-white"></i> Verificado
+            </span>
+          </div>
+          <div>
+            <span class="text-appleSubtext block uppercase text-[9px] font-bold tracking-wider">Licencia</span>
+            <span class="text-white font-semibold">Oficial / Guía</span>
+          </div>
+          <div>
+            <span class="text-appleSubtext block uppercase text-[9px] font-bold tracking-wider">Compatibilidad</span>
+            <span id="modalOS" class="text-white font-semibold">Windows 10/11</span>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div>
+          <h4 class="text-xs font-bold text-appleSubtext uppercase tracking-wider mb-2">Descripción</h4>
+          <p id="modalDescription" class="text-sm text-appleText leading-relaxed bg-black/30 p-4 rounded-2xl border border-appleBorder">
+            Descripción detallada del programa.
+          </p>
+        </div>
+
+        <!-- Alejandrx15 Verification Seal -->
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-white/10 via-white/5 to-transparent border border-white/20 flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center font-black text-xs shadow-apple-white-glow shrink-0">
+            A15
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">Verificación Alejandrx15</p>
+            <p class="text-[11px] text-appleSubtext">Selecciona 'Página Oficial' para acceder a la web directa o 'Tutorial del Programa' para ver la guía en vídeo.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer (2 MANDATORY BUTTONS) -->
+      <div class="p-5 bg-black border-t border-appleBorder flex flex-col sm:flex-row items-center justify-end gap-3">
+        
+        <!-- BOTÓN 1: PÁGINA OFICIAL -->
+        <a 
+          id="modalOfficialBtn" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="w-full sm:w-1/2 py-3 px-5 btn-apple-white rounded-full text-xs font-extrabold flex items-center justify-center space-x-2 text-center"
+        >
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>PÁGINA OFICIAL</span>
+        </a>
+
+        <!-- BOTÓN 2: LINK DEL PROGRAMA -->
+        <a 
+          id="modalTutorialBtn" 
+          href="#" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="w-full sm:w-1/2 py-3 px-5 btn-apple-dark rounded-full text-xs font-extrabold flex items-center justify-center space-x-2 text-center"
+        >
+          <i class="fa-brands fa-youtube text-red-500"></i>
+          <span>LINK DEL PROGRAMA</span>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-black border-t border-appleBorder mt-16 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+            <img src="e5bb3efa57fff60e7b6bbd1afcb27940~tplv-tiktokx-cropcenter_1080_1080 (1).jpeg" alt="Alejandrx15" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80'">
+          </div>
+          <div>
+            <p class="font-bold text-white text-sm">Alejandrx15</p>
+            <p class="text-xs text-appleSubtext">Portal Oficial de Software & Tutoriales</p>
+          </div>
+        </div>
+
+        <div class="text-center md:text-right">
+          <p class="text-xs text-appleSubtext">
+            © <span id="yearSpan"></span> Alejandrx15. Todos los derechos reservados.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT DATA & APP LOGIC -->
+  <script>
+    /*
+    =================================================================================
+    📌 PROGRAMAS - DATASET COMPLETO (30 PROGRAMAS)
+    =================================================================================
+    Puedes modificar 'linkOficial' y 'linkTutorial' en cada objeto para colocar tus
+    enlaces personales.
+    =================================================================================
+    */
+
+    const programas = [
+      {
+        id: 1,
+        nombre: "Adobe Acrobat Pro 2026",
+        categoria: "Ofimática & PDF",
+        version: "v2026.001",
+        descripcion: "Creación, edición, gestión y firma digital de documentos PDF con herramientas avanzadas de seguridad.",
+        icono: "fa-file-pdf",
+        linkOficial: "https://cutw.in/X5nmCFQu",
+        linkTutorial: "https://cuty.io/TjzrIoQsUvBp"
+      },
+      {
+        id: 2,
+        nombre: "Foxit Studio Photo v3.6.6",
+        categoria: "Edición de Fotos",
+        version: "v3.6.6",
+        descripcion: "Editor de fotos rápido con ajuste de color, retocado automático, capas y filtros profesionales.",
+        icono: "fa-image",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 3,
+        nombre: "Internet Download Manager (IDM) 2026",
+        categoria: "Gestor de Descargas",
+        version: "v6.43 Build 5",
+        descripcion: "Acelera descargas hasta 5 veces, gestiona descargas pausadas y captura vídeo de múltiples plataformas.",
+        icono: "fa-download",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 4,
+        nombre: "Adobe Illustrator 2026",
+        categoria: "Suite Adobe",
+        version: "v30.0.0",
+        descripcion: "Diseño vectorial profesional para logotipos, ilustración digital, tipografía y diseño publicitario.",
+        icono: "fa-pen-nib",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 5,
+        nombre: "Avast Premium Security 2026",
+        categoria: "Antivirus",
+        version: "v24.2.0",
+        descripcion: "Protección antivirus avanzada con firewall inteligente, escudo anti-ransomware y seguridad bancaria.",
+        icono: "fa-shield-halved",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 6,
+        nombre: "HitPaw Video Enhancer 2026 AI",
+        categoria: "Edición de Vídeo",
+        version: "v3.2.0 AI",
+        descripcion: "Mejorador de vídeo mediante inteligencia artificial para escalar resoluciones a 4K/8K y eliminar ruido.",
+        icono: "fa-wand-magic-sparkles",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 7,
+        nombre: "Enscape 2026",
+        categoria: "Diseño CAD / 3D",
+        version: "v4.1.0",
+        descripcion: "Renderizado en tiempo real y realidad virtual para Revit, SketchUp, Rhino y Archicad.",
+        icono: "fa-cube",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 8,
+        nombre: "Autodesk Revit 2026",
+        categoria: "Diseño CAD / 3D",
+        version: "v2026.2",
+        descripcion: "Modelado de información de construcción (BIM) para arquitectura, estructura e ingeniería MEP.",
+        icono: "fa-building",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 9,
+        nombre: "AutoCAD 2027",
+        categoria: "Diseño CAD / 3D",
+        version: "v2027.1",
+        descripcion: "El software de diseño CAD estándar en la industria para planos 2D y modelado tridimensional.",
+        icono: "fa-compass-drafting",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 10,
+        nombre: "CorelDRAW Graphics Suite 2026",
+        categoria: "Edición de Fotos",
+        version: "v25.2",
+        descripcion: "Suite completa para ilustración vectorial, maquetación de páginas, edición de fotos y tipografía.",
+        icono: "fa-palette",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 11,
+        nombre: "DxO PhotoLab Elite 9",
+        categoria: "Edición de Fotos",
+        version: "v9.0.1",
+        descripcion: "Procesador de archivos RAW de alta fidelidad con reducción de ruido por IA DeepPRIME.",
+        icono: "fa-camera",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 12,
+        nombre: "Pinnacle Studio Ultimate 26",
+        categoria: "Edición de Vídeo",
+        version: "v26.0",
+        descripcion: "Editor de vídeo no lineal avanzado con soporte multicámara, gradación de color e hiperlapso.",
+        icono: "fa-film",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 13,
+        nombre: "DxO PureRAW 5",
+        categoria: "Edición de Fotos",
+        version: "v5.0.0",
+        descripcion: "Optimiza tus archivos RAW eliminando ruido digital y corrigiendo imperfecciones de lente.",
+        icono: "fa-sliders",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 14,
+        nombre: "Capture One Pro Enterprise v16.7",
+        categoria: "Edición de Fotos",
+        version: "v16.7.0",
+        descripcion: "El software de retoque y captura conectada preferido por fotógrafos profesionales del mundo.",
+        icono: "fa-aperture",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 15,
+        nombre: "Ashampoo UnInstaller 16",
+        categoria: "Limpieza y Optimización",
+        version: "v16.0",
+        descripcion: "Desinstalador profundo de aplicaciones que elimina residuos, registros y archivos basura.",
+        icono: "fa-trash-can",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 16,
+        nombre: "Adobe Photoshop 2026",
+        categoria: "Suite Adobe",
+        version: "v27.0.1",
+        descripcion: "Edición de imagen, composición digital y diseño gráfico asistido por herramientas generativas de IA.",
+        icono: "fa-photo-film",
+        linkOficial: "https://cuty.io/BgKib9qFrIIW",
+        linkTutorial: "https://cutw.in/Photoshop"
+      },
+      {
+        id: 17,
+        nombre: "Adobe Premiere Pro 2026",
+        categoria: "Suite Adobe",
+        version: "v25.0.0",
+        descripcion: "Edición de vídeo profesional para cine, televisión y web con herramientas de color y audio por IA.",
+        icono: "fa-video",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 18,
+        nombre: "Adobe After Effects 2026",
+        categoria: "Suite Adobe",
+        version: "v25.0.0",
+        descripcion: "Efectos visuales, gráficos en movimiento y composición 3D para producciones audiovisuales.",
+        icono: "fa-sparkles",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 19,
+        nombre: "Wondershare Filmora 13",
+        categoria: "Edición de Vídeo",
+        version: "v13.5",
+        descripcion: "Editor de vídeo intuitivo con efectos, transiciones, recortado por IA y plantillas creadoras.",
+        icono: "fa-clapperboard",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 20,
+        nombre: "DaVinci Resolve Studio 19",
+        categoria: "Edición de Vídeo",
+        version: "v19.1",
+        descripcion: "Suite completa con edición, corrección de color Hollywood, efectos Fairlight y postproducción de audio.",
+        icono: "fa-compact-disc",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 21,
+        nombre: "FL Studio 21 Producer Edition",
+        categoria: "Audio / DJ",
+        version: "v21.2",
+        descripcion: "Estación de trabajo de audio digital (DAW) completa para composición, grabación, mezcla y masterización.",
+        icono: "fa-music",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 22,
+        nombre: "VirtualDJ Pro 2026",
+        categoria: "Audio / DJ",
+        version: "v2026.8",
+        descripcion: "Software de mezclas DJ con separación de stems en tiempo real, efectos y soporte para controladores.",
+        icono: "fa-sliders",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 23,
+        nombre: "TechSmith Camtasia 2024",
+        categoria: "Edición de Vídeo",
+        version: "v2024.1",
+        descripcion: "Grabador de pantalla y editor de vídeo ideal para tutoriales, demostraciones de software y presentaciones.",
+        icono: "fa-desktop",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 24,
+        nombre: "Microsoft Office 2024 LTSC",
+        categoria: "Ofimática & PDF",
+        version: "v2024 LTSC",
+        descripcion: "Suite ofimática que incluye Word, Excel, PowerPoint, Outlook y Access para uso empresarial y personal.",
+        icono: "fa-file-lines",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 25,
+        nombre: "CCleaner Professional 2026",
+        categoria: "Limpieza y Optimización",
+        version: "v6.22",
+        descripcion: "Herramienta de limpieza de disco, optimización del registro, actualización de drivers y aceleración.",
+        icono: "fa-broom",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 26,
+        nombre: "WinRAR 7.00 Full",
+        categoria: "VPN y Compresores",
+        version: "v7.00",
+        descripcion: "Compresor y descompresor universal con cifrado AES-256, reparación de archivos y algoritmos RAR5.",
+        icono: "fa-file-zipper",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 27,
+        nombre: "Topaz Gigapixel AI 2026",
+        categoria: "Edición de Fotos",
+        version: "v7.2",
+        descripcion: "Aumenta la resolución de imágenes hasta un 600% manteniendo nitidez, textura y detalles naturales.",
+        icono: "fa-expand",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 28,
+        nombre: "Wondershare PDFelement 10",
+        categoria: "Ofimática & PDF",
+        version: "v10.4",
+        descripcion: "Editor PDF todo en uno con OCR, traducción con IA, firma digital y conversión a múltiples formatos.",
+        icono: "fa-file-pen",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 29,
+        nombre: "EaseUS Data Recovery Wizard",
+        categoria: "Limpieza y Optimización",
+        version: "v18.0",
+        descripcion: "Recuperación de archivos borrados o formateados en discos duros, SSDs, memorias USB y tarjetas SD.",
+        icono: "fa-hard-drive",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      },
+      {
+        id: 30,
+        nombre: "ExpressVPN Pro 2026",
+        categoria: "VPN y Compresores",
+        version: "v12.8",
+        descripcion: "Servicio de red privada virtual (VPN) con cifrado de grado militar, servidores en 105 países y alta velocidad.",
+        icono: "fa-network-wired",
+        linkOficial: "https://cutw.in/QrHtTI",
+        linkTutorial: "https://cutw.in/QrHtTI"
+      }
+    ];
+
+    // CATEGORIES
+    const categorias = [
+      "Todas",
+      "Suite Adobe",
+      "Edición de Fotos",
+      "Edición de Vídeo",
+      "Diseño CAD / 3D",
+      "Antivirus",
+      "Limpieza y Optimización",
+      "Gestor de Descargas",
+      "Ofimática & PDF",
+      "Audio / DJ",
+      "VPN y Compresores"
+    ];
+
+    // Normaliza texto: ignora mayúsculas y tildes (así "edicion" encuentra "Edición")
+    const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+    // APP STATE
+    let currentCategory = "Todas";
+    let currentSearchQuery = "";
+    let currentPage = 1;
+    const itemsPerPage = 12; // múltiplo de 2, 3 y 4 columnas: sin tarjetas huérfanas
+
+    // DOM ELEMENTS
+    const programsGrid = document.getElementById('programsGrid');
+    const categoriesContainer = document.getElementById('categoriesContainer');
+    const searchInput = document.getElementById('searchInput');
+    const searchInputMobile = document.getElementById('searchInputMobile');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const resultsCounter = document.getElementById('resultsCounter');
+    const heroTotalCount = document.getElementById('heroTotalCount');
+    const emptyState = document.getElementById('emptyState');
+    const paginationContainer = document.getElementById('paginationContainer');
+
+    // INIT
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('yearSpan').textContent = new Date().getFullYear();
+      const hdr = document.querySelector('header');
+      const setHH = () => document.documentElement.style.setProperty('--hh', hdr.offsetHeight + 'px');
+      setHH(); window.addEventListener('resize', setHH);
+      if(heroTotalCount) heroTotalCount.textContent = `${programas.length} Programas Disponibles`;
+      renderCategories();
+      filterAndRender();
+      setupEventListeners();
+    });
+
+    // RENDER CATEGORY PILLS
+    function renderCategories() {
+      categoriesContainer.innerHTML = categorias.map(cat => {
+        const isActive = cat === currentCategory;
+        return `
+          <button 
+            onclick="setCategory('${cat}')" aria-pressed="${isActive}"
+            class="px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all ${
+              isActive 
+                ? 'bg-white text-black shadow-apple-white-glow' 
+                : 'apple-pill text-appleSubtext hover:text-white'
+            }"
+          >
+            ${cat}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // FILTER & RENDER
+    function filterAndRender() {
+      let filtered = programas;
+
+      if (currentCategory !== "Todas") {
+        filtered = filtered.filter(p => p.categoria === currentCategory);
+      }
+
+      if (currentSearchQuery.trim() !== "") {
+        const q = norm(currentSearchQuery);
+        filtered = filtered.filter(p => 
+          norm(p.nombre).includes(q) ||
+          norm(p.categoria).includes(q) ||
+          norm(p.descripcion).includes(q)
+        );
+      }
+
+      resultsCounter.textContent = `${filtered.length} disponible(s)`;
+
+      if (filtered.length === 0) {
+        programsGrid.innerHTML = "";
+        emptyState.classList.remove('hidden');
+        paginationContainer.innerHTML = "";
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      const totalPages = Math.ceil(filtered.length / itemsPerPage);
+      if (currentPage > totalPages) currentPage = 1;
+
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const paginated = filtered.slice(startIndex, startIndex + itemsPerPage);
+
+      // CARDS HTML
+      programsGrid.innerHTML = paginated.map((p, i) => `
+        <div class="apple-card rounded-3xl overflow-hidden flex flex-col justify-between group p-5" style="animation: fadeUp .6s cubic-bezier(.16,1,.3,1) backwards; animation-delay: ${Math.min(i, 11) * 60}ms">
+          
+          <div>
+            <!-- Icon Box Banner -->
+            <div class="relative h-36 rounded-2xl overflow-hidden mb-4 border border-appleBorder bg-gradient-to-b from-[#2c2c2e] to-black flex items-center justify-center group-hover:border-white/40 transition-all">
+              <i class="fa-solid ${p.icono || 'fa-box'} text-4xl text-white group-hover:scale-110 transition-transform duration-300"></i>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold bg-black/80 backdrop-blur-md text-white border border-white/20">
+                ${p.categoria}
+              </span>
+            </div>
+
+            <h3 class="font-black text-base text-white tracking-tight line-clamp-1 mb-1">
+              ${p.nombre}
+            </h3>
+
+            <div class="flex items-center space-x-2 text-[11px] text-appleSubtext font-mono mb-3">
+              <span>${p.version}</span>
+              <span>•</span>
+              <span class="text-white font-medium">Verificado</span>
+            </div>
+
+            <p class="text-xs text-appleSubtext line-clamp-2 leading-relaxed mb-5">
+              ${p.descripcion}
+            </p>
+          </div>
+
+          <!-- ACTIONS AREA -->
+          <div class="space-y-2 pt-3 border-t border-appleBorder">
+            
+            <!-- MAIN WHITE ANIMATED BUTTON -->
+            <button 
+              onclick="openModal(${p.id})" 
+              class="w-full py-2.5 px-4 btn-apple-white rounded-full text-xs font-black flex items-center justify-center space-x-2"
+            >
+              <i class="fa-solid fa-arrow-right-to-bracket"></i>
+              <span>OBTENER / ENLACES</span>
+            </button>
+
+          </div>
+
+        </div>
+      `).join('');
+
+      renderPagination(totalPages);
+    }
+
+    // PAGINATION
+    function renderPagination(totalPages) {
+      if (totalPages <= 1) {
+        paginationContainer.innerHTML = "";
+        return;
+      }
+
+      let html = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const isActive = i === currentPage;
+        html += `
+          <button 
+            onclick="changePage(${i})"
+            class="w-9 h-9 rounded-full text-xs font-black transition-all ${
+              isActive 
+                ? 'bg-white text-black shadow-apple-white-glow' 
+                : 'bg-[#1c1c1e] text-appleSubtext border border-appleBorder hover:text-white hover:border-white'
+            }"
+          >
+            ${i}
+          </button>
+        `;
+      }
+      paginationContainer.innerHTML = html;
+    }
+
+    function changePage(page) {
+      currentPage = page;
+      filterAndRender();
+      document.getElementById('programsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      currentPage = 1;
+      renderCategories();
+      filterAndRender();
+    }
+
+    function resetFilters() {
+      currentCategory = "Todas";
+      currentSearchQuery = "";
+      currentPage = 1;
+      if (searchInput) searchInput.value = "";
+      if (searchInputMobile) searchInputMobile.value = "";
+      if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+      renderCategories();
+      filterAndRender();
+    }
+
+    function setupEventListeners() {
+      const handleSearch = (e) => {
+        currentSearchQuery = e.target.value;
+        if (searchInput && e.target !== searchInput) searchInput.value = currentSearchQuery;
+        if (searchInputMobile && e.target !== searchInputMobile) searchInputMobile.value = currentSearchQuery;
+        currentPage = 1;
+        if (clearSearchBtn) {
+          if (currentSearchQuery) clearSearchBtn.classList.remove('hidden');
+          else clearSearchBtn.classList.add('hidden');
+        }
+        filterAndRender();
+      };
+
+      if (searchInput) searchInput.addEventListener('input', handleSearch);
+      if (searchInputMobile) searchInputMobile.addEventListener('input', handleSearch);
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = "";
+          currentSearchQuery = "";
+          clearSearchBtn.classList.add('hidden');
+          filterAndRender();
+        });
+      }
+
+      const modal = document.getElementById('programModal');
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !document.getElementById('programModal').classList.contains('hidden')) closeModal();
+      });
+    }
+
+    // MODAL WINDOW WITH 2 BUTTONS
+    function openModal(id) {
+      const p = programas.find(prog => prog.id === id);
+      if (!p) return;
+
+      document.getElementById('modalTitle').textContent = p.nombre;
+      document.getElementById('modalCategory').textContent = p.categoria;
+      document.getElementById('modalVersion').textContent = `Versión: ${p.version}`;
+      
+      const iconContainer = document.getElementById('modalIconContainer');
+      iconContainer.innerHTML = `<i class="fa-solid ${p.icono || 'fa-box'} text-white text-3xl"></i>`;
+
+      document.getElementById('modalDescription').textContent = p.descripcion;
+
+      // SET BOTH BUTTON LINKS
+      const officialBtn = document.getElementById('modalOfficialBtn');
+      const tutorialBtn = document.getElementById('modalTutorialBtn');
+
+      officialBtn.href = p.linkOficial;
+      tutorialBtn.href = p.linkTutorial;
+
+      const modal = document.getElementById('programModal');
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('programModal');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+</body>
+</html>
