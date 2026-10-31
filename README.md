@@ -1,6 +1,7 @@
 # ⚡ Alejandrx15 - Catálogo de Software y Herramientas PC
 
-Portal web oficial de **Alejandrx15** diseñado con interfaz **Apple / iPhone Dark Mode** (Space Gray & Titanium), buscador en tiempo real, catálogo interactivo de programas y enlaces a guías/tutoriales oficiales.
+Portal web oficial de **Alejandrx15** diseñado con interfaz **Apple / iPhone Dark Mode** (Space Gray & Titanium),
+https://alejandrx15.vercel.app/
 
 ## 🚀 Características
 - **Diseño Premium**: Estética minimalista en tonos negro azabache, gris espacio y detalles en cristal.
